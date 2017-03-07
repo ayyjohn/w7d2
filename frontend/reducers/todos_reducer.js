@@ -1,5 +1,4 @@
-import { RECEIVE_TODOS } from '../actions/todo_actions.js';
-import { RECEIVE_TODO } from '../actions/todo_actions.js';
+import { RECEIVE_TODOS, REMOVE_TODO, RECEIVE_TODO } from '../actions/todo_actions.js';
 import { merge } from 'lodash';
 
 const initialState = {
@@ -28,6 +27,9 @@ const todosReducer = (state = initialState, action) => {
 
     case RECEIVE_TODO:
       newState[action.todo.id] = action.todo;
+      return newState;
+    case REMOVE_TODO:
+      delete newState[action.todo];
       return newState;
     default:
       return state;
